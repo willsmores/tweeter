@@ -1,0 +1,39 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+}
+
+textarea {
+  background-color: #f4f1ec;
+  border: none;
+  border-bottom: 3px solid #000;
+}
+
+footer {
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-tweet button {
+  background-color: #4152A1;
+  color: #fff;
+  font-family: 'Bungee', sans-serif;
+  padding: 5px 10px;
+  border-color: #4152A1;
+}
+
+.new-tweet button:hover {
+  background-color: #fff;
+  border-color: #000;
+  color: hotpink;
+  cursor: pointer;
+}
+
+.counter {
+  font-family: 'Bungee', sans-serif;
+}
