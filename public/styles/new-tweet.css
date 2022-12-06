@@ -28,12 +28,16 @@ footer {
 }
 
 .new-tweet button:hover {
-  background-color: #fff;
+  background-color: #659B5E;
   border-color: #000;
-  color: hotpink;
+  color: #000;
   cursor: pointer;
 }
 
 .counter {
   font-family: 'Bungee', sans-serif;
+}
+
+.counter-negative {
+  color: red;
 }

@@ -1,20 +1,22 @@
-header {
+.header-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: chocolate;
+  background-color: #5f9434;
   padding-top: 120px;
   height: 520px;
-  background-image: url(../images/brick-wall.png);
+  /* background-image: url(../images/brick-wall.png); */
+  background-image: url("https://www.transparenttextures.com/patterns/football-no-lines.png");
   background-repeat: repeat;
   background-attachment: fixed;
 }
 
-header h2 {
+.header-main h2 {
   font-weight: 300;
   color: #fff;
+  margin: 10px 0 20px 0;
 }
 
-header h2 span {
+.header-main h2 span {
   font-weight: 600;
 }
