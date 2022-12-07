@@ -4,10 +4,17 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-
-
 $(document).ready(function() {
+
+  $('#new-tweet').submit(function(event) {
+    // alert('Handler for .submit() called.');
+    event.preventDefault();
+    const tweetText = $(this).serialize();
+
+    $.post("/tweets", tweetText);
+    // console.log(tweetText);
+  });
+
 
   // Test / driver code (temporary). Eventually will get this from the server.
   const data = [
