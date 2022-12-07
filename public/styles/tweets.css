@@ -2,27 +2,28 @@ article {
   margin: 50px 0;
   border: 3px solid black;
   padding: 0 10px;
+  font-weight: 600;
 }
 
 article:hover {
-  box-shadow: 10px 10px 0px -1px rgba(201, 202, 226, 1);
-  -webkit-box-shadow: 10px 10px 0px -1px rgba(201, 202, 226, 1);
-  -moz-box-shadow: 10px 10px 0px -1px rgba(201, 202, 226, 1);
+  box-shadow: 10px 10px 0px 0px rgba(201, 202, 226, 1);
+  -webkit-box-shadow: 10px 10px 0px 0px rgba(201, 202, 226, 1);
+  -moz-box-shadow: 10px 10px 0px 0px rgba(201, 202, 226, 1);
 }
 
 article header {
   padding: 25px;
   display: flex;
   justify-content: space-between;
-
 }
 
 article p {
-  margin: 25px;
+  margin: 0 25px 25px;
 }
 
-article h3 {
-  font-weight: 300;
+article h3,
+article h4 {
+  margin: 0 0 0 25px;
 }
 
 article h4 {
@@ -30,9 +31,9 @@ article h4 {
 }
 
 article header div {
-  width: 200px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 article footer {
@@ -52,7 +53,7 @@ article footer p {
 
 .tweet-icons i {
   margin-left: 5px;
-  transition: .3s ease-in;
+  transition: .3s ease;
 }
 
 .tweet-icons i:hover {
@@ -60,5 +61,5 @@ article footer p {
 }
 
 article img {
-  max-width: 100px;
+  height: 60px;
 }

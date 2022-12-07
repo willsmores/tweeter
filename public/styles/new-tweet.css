@@ -24,11 +24,12 @@ footer {
   color: #fff;
   font-family: 'Bungee', sans-serif;
   padding: 5px 10px;
-  border-color: #4152A1;
+  border: 3px solid #4152A1;
+  transition: .3s ease;
 }
 
 .new-tweet button:hover {
-  background-color: #659B5E;
+  background-color: hotpink;
   border-color: #000;
   color: #000;
   cursor: pointer;
