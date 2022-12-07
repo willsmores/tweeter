@@ -7,13 +7,24 @@
 $(document).ready(function() {
 
   $('#new-tweet').submit(function(event) {
-    // alert('Handler for .submit() called.');
     event.preventDefault();
     const tweetText = $(this).serialize();
-
-    $.post("/tweets", tweetText);
     // console.log(tweetText);
+
+    if (!validateForm(tweetText)) {
+      $.post("/tweets", tweetText);
+    }
   });
+
+
+  const validateForm = (text) => {
+    if (text.length - 5 === 0) {
+      alert (`Don't be shy, write some tweet content!`);
+    }
+    if (text.length - 5 > 144) {
+      alert (`Woah too many opinions! You only have 144 characters to use.`);
+    }
+  }
 
 
   const loadTweets = () => {
