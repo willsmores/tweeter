@@ -11,11 +11,6 @@ $(document).ready(function() {
 
     const rawTweetText = $('#tweet-text').val();
 
-    const tweetText = $(this).serialize();
-
-    // console.log('event:', event);
-    console.log('this:', tweetText);
-
     if (rawTweetText.length > 140) {
       $('#error-container')
         .text(`Woah, too many opinions bruh! You only have 140 characters to use. 😖`)
@@ -30,25 +25,26 @@ $(document).ready(function() {
         .addClass('unhide');
     }
 
+    const tweetText = $(this).serialize();
+
     if (rawTweetText.length > 0 && rawTweetText.length <= 140) {
-      $.post("/tweets", tweetText);
-      // Reset form and counter on successful post
-      $('#tweet-text').val('');
-      $('.counter').val(140);
-      // Clear any error messages
-      $('#error-container')
-        .removeClass('unhide')
-        .slideUp('slow');
+      $.post("/tweets", tweetText)
+        .done(function() {
+          // Reset form and counter on successful post
+          $('#tweet-text').val('');
+          $('.counter').val(140);
 
-      // Refresh the tweet container
-      $('#tweets-container').empty();
-      setTimeout(() => {
-        loadTweets();
-      }, "100")
-      
-    }
+          // Clear any error messages
+          $('#error-container')
+            .removeClass('unhide')
+            .slideUp('slow');
 
-  });
+          // Refresh the tweet container
+          $('#tweets-container').empty();
+          loadTweets();
+        });
+      }
+    });
 
 
   const loadTweets = () => {
@@ -81,12 +77,12 @@ $(document).ready(function() {
 
   const createTweetElement = (tweetData) => {
 
+    // Prevent Cross-Site Scripting
     const escape = function (str) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
     };
-
 
     console.log('tweetData:', tweetData);
     let $tweet = `
