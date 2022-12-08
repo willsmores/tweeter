@@ -80,6 +80,14 @@ $(document).ready(function() {
 
 
   const createTweetElement = (tweetData) => {
+
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
+
+
     console.log('tweetData:', tweetData);
     let $tweet = `
     <article>
@@ -90,7 +98,7 @@ $(document).ready(function() {
         </div>
         <h4>${tweetData.user.handle}</h4>
       </header>
-      <p class="tweet-text">${tweetData.content.text}</p>
+      <p class="tweet-text">${escape(tweetData.content.text)}</p>
       <footer>
         <p class="timeago">${timeago.format(tweetData.created_at)}</p>
         <div class="tweet-icons">
