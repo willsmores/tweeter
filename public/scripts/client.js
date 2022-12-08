@@ -15,7 +15,7 @@ $(document).ready(function() {
       $('#error-container')
         .text(`Woah, too many opinions bruh! You only have 140 characters to use. 😖`)
         .slideDown('slow')
-        .addClass('unhide')
+        .addClass('unhide');
     }
 
     if (rawTweetText.length === 0) {
