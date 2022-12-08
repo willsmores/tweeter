@@ -42,3 +42,17 @@ footer {
 .counter-negative {
   color: red;
 }
+
+.error-message {
+  display: none;
+  color: #fff;
+  border: 3px solid black;
+  padding: 15px;
+  margin-top: 15px;
+  text-align: center;
+  background: hotpink;
+}
+
+.unhide {
+  display: block;
+}

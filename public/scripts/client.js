@@ -8,36 +8,63 @@ $(document).ready(function() {
 
   $('#new-tweet').submit(function(event) {
     event.preventDefault();
+
+    const rawTweetText = $('#tweet-text').val();
+
     const tweetText = $(this).serialize();
-    // console.log(tweetText);
 
-    if (!validateForm(tweetText)) {
+    // console.log('event:', event);
+    console.log('this:', tweetText);
+
+    if (rawTweetText.length > 140) {
+      $('#error-container')
+        .text(`Woah, too many opinions bruh! You only have 140 characters to use. 😖`)
+        .slideDown('slow')
+        .addClass('unhide')
+    }
+
+    if (rawTweetText.length === 0) {
+      $('#error-container')
+        .text(`Don't be shy, share all those cool opinions you have! 😜`)
+        .slideDown('slow')
+        .addClass('unhide');
+    }
+
+    if (rawTweetText.length > 0 && rawTweetText.length <= 140) {
       $.post("/tweets", tweetText);
+      // Reset form and counter on successful post
+      $('#tweet-text').val('');
+      $('.counter').val(140);
+      // Clear any error messages
+      $('#error-container')
+        .removeClass('unhide')
+        .slideUp('slow');
+
+      // Refresh the tweet container
+      $('#tweets-container').empty();
+      setTimeout(() => {
+        loadTweets();
+      }, "100")
+      
     }
+
   });
-
-
-  const validateForm = (text) => {
-    if (text.length - 5 === 0) {
-      alert (`Don't be shy, write some tweet content!`);
-    }
-    if (text.length - 5 > 144) {
-      alert (`Woah too many opinions! You only have 144 characters to use.`);
-    }
-  }
 
 
   const loadTweets = () => {
 
-    // $.ajax('/tweets', { method: 'GET' })
-    // .then(function (moreTweets) {
-    //   renderTweets(moreTweets);
-    // });
+    $.ajax('/tweets', { method: 'GET' })
+    .then(function (moreTweets) {
+      renderTweets(moreTweets);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
     // jQuery version
-    $.get("/tweets", function(moreTweets, status) {
-      renderTweets(moreTweets);
-    });
+    // $.get("/tweets", function(moreTweets, status) {
+    //   renderTweets(moreTweets);
+    // });
   }
 
   loadTweets();
@@ -47,13 +74,13 @@ $(document).ready(function() {
 
     tweetArr.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     })
   };
 
 
   const createTweetElement = (tweetData) => {
-    // console.log(tweetData);
+    console.log('tweetData:', tweetData);
     let $tweet = `
     <article>
       <header>
