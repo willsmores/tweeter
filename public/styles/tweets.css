@@ -3,7 +3,6 @@ article {
   border: 3px solid black;
   padding: 0 10px;
   font-weight: 600;
-  transition: .3 ease;
 }
 
 article:hover {
@@ -20,6 +19,7 @@ article header {
 
 article p {
   margin: 0 25px 25px;
+  word-wrap: break-word;
 }
 
 article h3,

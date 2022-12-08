@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
   <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/media-queries.css" type="text/css" />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -46,36 +47,40 @@
     </div>
   </nav>
 
-  <header class="header-main">
-    <div>
-      <img src="/images/profile-hex.png">
-    </div>
-    <br>
-    <div>
-      <h2><span>Steve </span>Willsmore</h2>
-    </div>
-  </header>
+  <div class="wrapper">
 
-  <!-- Page-specific (main) content here -->
-  <main class="container">
+    <header class="header-main">
+      <div>
+        <img src="/images/profile-hex.png">
+      </div>
+      <br>
+      <div>
+        <h2><span>Steve </span>Willsmore</h2>
+      </div>
+    </header>
 
-    <section class="new-tweet">
-      <div id="error-container" class="error-message"></div>
-      <h2>Compose Tweet</h2>
-      <form id="new-tweet" action="/tweets" method="post">
-        <label for="tweet-text">What are you humming about?</label>
-        <textarea name="text" id="tweet-text"></textarea>
-        <footer>
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </footer>
-      </form>
-    </section>
+    <!-- Page-specific (main) content here -->
+    <main class="container">
 
-    <!-- Tweets will populate dynamically in here -->
-    <section id="tweets-container"></section>
+      <section class="new-tweet">
+        <div id="error-container" class="error-message"></div>
+        <h2>Compose Tweet</h2>
+        <form id="new-tweet" action="/tweets" method="post">
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea name="text" id="tweet-text"></textarea>
+          <footer>
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </footer>
+        </form>
+      </section>
 
-  </main>
+      <!-- Tweets will populate dynamically in here -->
+      <section id="tweets-container"></section>
+
+    </main>
+  </div>
+
 </body>
 
 </html>
