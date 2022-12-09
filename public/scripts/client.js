@@ -9,7 +9,7 @@ $(document).ready(function() {
   // Move focus to tweet text area
   $('#write-tweet-link').click(function(event) {
     event.preventDefault();
-    $("textarea#tweet-text").focus();
+    $('textarea#tweet-text').focus();
   });
 
   const totalChars = $('.counter').text();
@@ -36,7 +36,7 @@ $(document).ready(function() {
     const tweetText = $(this).serialize();
 
     if (rawTweetText.length > 0 && rawTweetText.length <= totalChars) {
-      $.post("/tweets", tweetText)
+      $.post('/tweets', tweetText)
         .then(function() {
           // Reset form and counter on successful post
           $('#tweet-text').val('');
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
     // Prevent Cross-Site Scripting
     const escape = function (str) {
-      let div = document.createElement("div");
+      let div = document.createElement('div');
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
     };
