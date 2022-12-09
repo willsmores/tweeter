@@ -5,8 +5,7 @@
   background-color: #5f9434;
   padding-top: 120px;
   height: 520px;
-  /* background-image: url(../images/brick-wall.png); */
-  background-image: url("https://www.transparenttextures.com/patterns/football-no-lines.png");
+  background-image: url(../images/football-no-lines.png);
   background-repeat: repeat;
   background-attachment: fixed;
 }

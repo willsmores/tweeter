@@ -11,12 +11,17 @@ textarea {
   background-color: #f4f1ec;
   border: none;
   border-bottom: 3px solid #000;
+  margin-top: 10px;
+  padding: 5px;
+  font-weight: 600;
+  color: #4152A1;
 }
 
 footer {
   padding-top: 15px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .new-tweet button {
@@ -45,7 +50,8 @@ footer {
 
 .error-message {
   display: none;
-  color: #fff;
+  color: #000;
+  font-weight: 600;
   border: 3px solid black;
   padding: 15px;
   margin-top: 15px;

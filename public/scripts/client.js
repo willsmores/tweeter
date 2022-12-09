@@ -6,12 +6,20 @@
 
 $(document).ready(function() {
 
+  // Move focus to tweet text area
+  $('#write-tweet-link').click(function(event) {
+    event.preventDefault();
+    $("textarea#tweet-text").focus();
+  });
+
+  const totalChars = $('.counter').text();
+
   $('#new-tweet').submit(function(event) {
     event.preventDefault();
 
     const rawTweetText = $('#tweet-text').val();
 
-    if (rawTweetText.length > 140) {
+    if (rawTweetText.length > totalChars) {
       $('#error-container')
         .text(`Woah, too many opinions bruh! You only have 140 characters to use. 😖`)
         .slideDown('slow')
@@ -27,9 +35,9 @@ $(document).ready(function() {
 
     const tweetText = $(this).serialize();
 
-    if (rawTweetText.length > 0 && rawTweetText.length <= 140) {
+    if (rawTweetText.length > 0 && rawTweetText.length <= totalChars) {
       $.post("/tweets", tweetText)
-        .done(function() {
+        .then(function() {
           // Reset form and counter on successful post
           $('#tweet-text').val('');
           $('.counter').val(140);
@@ -48,7 +56,6 @@ $(document).ready(function() {
 
 
   const loadTweets = () => {
-
     $.ajax('/tweets', { method: 'GET' })
     .then(function (moreTweets) {
       renderTweets(moreTweets);
@@ -56,13 +63,8 @@ $(document).ready(function() {
     .catch((err) => {
       console.log(err);
     });
-
-    // jQuery version
-    // $.get("/tweets", function(moreTweets, status) {
-    //   renderTweets(moreTweets);
-    // });
-  }
-
+  };
+  // Call immediately to preload page with existing tweets
   loadTweets();
 
 
@@ -84,8 +86,7 @@ $(document).ready(function() {
       return div.innerHTML;
     };
 
-    console.log('tweetData:', tweetData);
-    let $tweet = `
+    const $tweet = `
     <article>
       <header>
         <div>
